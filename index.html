@@ -6,130 +6,183 @@
   <meta name="description" content="Portfolio of Nikhil Reddy Chitkula — healthcare IT, cybersecurity, digital health, and SaaS projects." />
   <title>Nikhil Reddy Chitkula — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
 </head>
 <body>
+  <div class="noise"></div>
+  <div class="aurora aurora-one"></div>
+  <div class="aurora aurora-two"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="container nav-wrap">
-      <a class="brand" href="#top">Nikhil Reddy</a>
+      <a class="brand" href="#top" aria-label="Back to top">
+        <span class="brand-mark">NR</span>
+        <span>Nikhil Reddy</span>
+      </a>
       <nav>
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
+      <a class="mini-cta" href="https://github.com/Nikhilr23" target="_blank" rel="noreferrer">GitHub ↗</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero container">
-      <div>
+      <div class="hero-copy reveal">
         <p class="eyebrow">Healthcare IT · Cybersecurity · SaaS Builder</p>
-        <h1>I build practical digital products that solve real problems.</h1>
-        <p class="lead">A project portfolio spanning healthcare technology, cybersecurity, digital health, and small-business SaaS experiments.</p>
+        <h1>
+          I build useful digital products
+          <span class="gradient-text">with real-world impact.</span>
+        </h1>
+        <p class="lead">I turn healthcare, security, and small-business problems into practical software — from validated SaaS experiments to digital-health and cybersecurity projects.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#projects">View projects</a>
-          <a class="button secondary" href="https://github.com/Nikhilr23" target="_blank" rel="noreferrer">GitHub profile</a>
+          <a class="button primary" href="#projects">Explore my work</a>
+          <a class="button secondary" href="https://github.com/Nikhilr23" target="_blank" rel="noreferrer">View GitHub</a>
+        </div>
+        <div class="hero-metrics">
+          <div><strong>5+</strong><span>Public projects</span></div>
+          <div><strong>3</strong><span>Core domains</span></div>
+          <div><strong>1</strong><span>Live SaaS product</span></div>
         </div>
       </div>
-      <aside class="hero-card">
-        <span class="status-dot"></span>
-        <strong>Currently building</strong>
-        <p>Small, useful SaaS products with simple MVPs, low operating cost, and validation before scaling.</p>
-      </aside>
+
+      <div class="hero-visual reveal" aria-label="Interactive portfolio visual">
+        <div class="orbit orbit-a"></div>
+        <div class="orbit orbit-b"></div>
+        <div class="core-card glass-card">
+          <div class="core-topline"><span class="status-dot"></span> Currently building</div>
+          <div class="core-symbol">✦</div>
+          <h2>Build small.<br/>Validate fast.<br/>Improve with users.</h2>
+          <p>Focused products, low complexity, useful outcomes.</p>
+        </div>
+        <div class="floating-chip chip-one">Healthcare IT</div>
+        <div class="floating-chip chip-two">Cybersecurity</div>
+        <div class="floating-chip chip-three">SaaS</div>
+      </div>
+    </section>
+
+    <section class="marquee-section" aria-hidden="true">
+      <div class="marquee-track">
+        <span>HEALTHCARE IT</span><span>✦</span><span>CYBERSECURITY</span><span>✦</span><span>SAAS PRODUCTS</span><span>✦</span><span>DIGITAL HEALTH</span><span>✦</span><span>HEALTHCARE IT</span><span>✦</span><span>CYBERSECURITY</span><span>✦</span><span>SAAS PRODUCTS</span><span>✦</span><span>DIGITAL HEALTH</span><span>✦</span>
+      </div>
     </section>
 
     <section id="projects" class="projects-section">
       <div class="container">
-        <div class="section-heading">
+        <div class="section-heading reveal">
           <p class="eyebrow">Selected work</p>
-          <h2>Projects</h2>
-          <p>Live products, prototypes, academic work, and cybersecurity projects in one place.</p>
+          <h2>Projects built to be used, not just displayed.</h2>
+          <p>Live products, prototypes, academic work, and cybersecurity projects — all in one place.</p>
         </div>
 
         <div class="project-grid">
-          <article class="project-card featured">
-            <div class="tag-row"><span>SaaS</span><span>Live</span></div>
+          <article class="project-card featured reveal tilt-card">
+            <div class="project-number">01</div>
+            <div class="tag-row"><span>SaaS</span><span>Live</span><span>Featured</span></div>
             <h3>ProfitQuote</h3>
-            <p>A profit-aware pricing calculator for cleaning businesses. It calculates true job cost, profit, gross margin, and the minimum profitable quote for a target margin.</p>
+            <p>A profit-aware pricing calculator for cleaning businesses. It calculates true job cost, gross margin, estimated profit, and the minimum profitable quote for a target margin.</p>
+            <div class="project-stats">
+              <div><strong>No backend</strong><span>Runs fully in browser</span></div>
+              <div><strong>Margin aware</strong><span>Pricing built around profitability</span></div>
+              <div><strong>Fast MVP</strong><span>Validated before scaling</span></div>
+            </div>
             <div class="tech">HTML · CSS · JavaScript · GitHub Pages</div>
             <div class="card-actions">
-              <a href="https://nikhilr23.github.io/profitquote/" target="_blank" rel="noreferrer">Live app ↗</a>
-              <a href="https://github.com/Nikhilr23/profitquote" target="_blank" rel="noreferrer">Repository ↗</a>
+              <a href="https://nikhilr23.github.io/profitquote/" target="_blank" rel="noreferrer">Open live app ↗</a>
+              <a href="https://github.com/Nikhilr23/profitquote" target="_blank" rel="noreferrer">View repository ↗</a>
             </div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card reveal tilt-card">
+            <div class="project-number">02</div>
             <div class="tag-row"><span>Digital Health</span><span>Academic</span></div>
             <h3>MindSync</h3>
             <p>A mental wellness web app with mood tracking, wellness resources, guided content, crisis-support links, and a logic-based conversational companion.</p>
             <div class="tech">HTML · CSS · JavaScript · jQuery · Bootstrap</div>
-            <div class="card-actions">
-              <a href="https://github.com/Nikhilr23/MindSync-Demo" target="_blank" rel="noreferrer">Repository ↗</a>
-            </div>
+            <div class="card-actions"><a href="https://github.com/Nikhilr23/MindSync-Demo" target="_blank" rel="noreferrer">View repository ↗</a></div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card reveal tilt-card">
+            <div class="project-number">03</div>
             <div class="tag-row"><span>Cybersecurity</span><span>Healthcare</span></div>
             <h3>Healthcare Cybersecurity</h3>
             <p>A hands-on healthcare security project focused on vulnerability assessment, network monitoring, endpoint protection, and EHR security.</p>
             <div class="tech">Kali Linux · Nmap · Wireshark · ClamAV · Splunk</div>
-            <div class="card-actions">
-              <a href="https://github.com/Nikhilr23/healthcare-cybersecurity" target="_blank" rel="noreferrer">Repository ↗</a>
-            </div>
+            <div class="card-actions"><a href="https://github.com/Nikhilr23/healthcare-cybersecurity" target="_blank" rel="noreferrer">View repository ↗</a></div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card reveal tilt-card">
+            <div class="project-number">04</div>
             <div class="tag-row"><span>Cybersecurity</span><span>Learning</span></div>
             <h3>Cybersecurity Healthcare 101</h3>
             <p>A practical learning repository documenting healthcare cybersecurity concepts and hands-on security exercises.</p>
             <div class="tech">HIPAA · Threat Analysis · Network Security</div>
-            <div class="card-actions">
-              <a href="https://github.com/Nikhilr23/cybersecurity-healthcare-101" target="_blank" rel="noreferrer">Repository ↗</a>
-            </div>
+            <div class="card-actions"><a href="https://github.com/Nikhilr23/cybersecurity-healthcare-101" target="_blank" rel="noreferrer">View repository ↗</a></div>
           </article>
 
-          <article class="project-card">
+          <article class="project-card reveal tilt-card">
+            <div class="project-number">05</div>
             <div class="tag-row"><span>Cybersecurity</span><span>Visual</span></div>
             <h3>Healthcare Cybersecurity Visuals</h3>
-            <p>A companion visual repository for explaining and documenting healthcare cybersecurity concepts more clearly.</p>
+            <p>A companion visual repository for explaining and documenting healthcare cybersecurity concepts clearly and visually.</p>
             <div class="tech">Security Education · Visual Communication</div>
-            <div class="card-actions">
-              <a href="https://github.com/Nikhilr23/healthcare-cybersecurity-visuals" target="_blank" rel="noreferrer">Repository ↗</a>
-            </div>
+            <div class="card-actions"><a href="https://github.com/Nikhilr23/healthcare-cybersecurity-visuals" target="_blank" rel="noreferrer">View repository ↗</a></div>
           </article>
 
-          <article class="project-card muted-card">
-            <div class="tag-row"><span>Coming next</span></div>
-            <h3>New niche SaaS products</h3>
-            <p>More focused tools will be added here as they are researched, validated, built, and launched.</p>
+          <article class="project-card future-card reveal">
+            <div class="project-number">∞</div>
+            <div class="tag-row"><span>Next experiments</span></div>
+            <h3>More niche SaaS products</h3>
+            <p>Each future product follows the same path: research a painful problem, build the smallest useful version, validate it, then scale only what users actually want.</p>
             <div class="tech">Research → MVP → Validation → Launch</div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="about" class="about-section container">
-      <div class="section-heading">
-        <p class="eyebrow">About</p>
-        <h2>Technology with a healthcare foundation.</h2>
+    <section id="about" class="about-section">
+      <div class="container about-wrap">
+        <div class="about-heading reveal">
+          <p class="eyebrow">About me</p>
+          <h2>Healthcare foundation.<br/>Builder mindset.</h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>I work at the intersection of healthcare IT, health informatics, cybersecurity, and practical software. My projects focus on making workflows simpler, safer, easier to understand, or more useful for real people.</p>
+          <p>I enjoy turning complicated problems into clear systems — especially when the result is something people can actually use.</p>
+        </div>
       </div>
-      <div class="about-grid">
-        <p>I work at the intersection of healthcare IT, health informatics, cybersecurity, and practical software products. My projects focus on making complex workflows simpler, safer, or more useful for real users.</p>
-        <div class="skill-list">
-          <span>Healthcare IT</span><span>EHR workflows</span><span>Cybersecurity</span><span>Health Informatics</span><span>JavaScript</span><span>SQL</span><span>Power BI</span><span>HL7 / FHIR</span>
+      <div class="container skill-cloud reveal">
+        <span>Healthcare IT</span><span>EHR Workflows</span><span>Health Informatics</span><span>Cybersecurity</span><span>HTML/CSS/JS</span><span>SQL</span><span>Power BI</span><span>HL7</span><span>FHIR</span><span>GitHub</span><span>Product Validation</span><span>SaaS MVPs</span>
+      </div>
+    </section>
+
+    <section class="principles-section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">How I build</p>
+          <h2>Simple principles. Better products.</h2>
+        </div>
+        <div class="principle-grid">
+          <div class="principle reveal"><span>01</span><h3>Start with pain</h3><p>Find a problem people are already trying to solve manually.</p></div>
+          <div class="principle reveal"><span>02</span><h3>Keep the MVP small</h3><p>Build the smallest version that delivers a clear useful outcome.</p></div>
+          <div class="principle reveal"><span>03</span><h3>Validate before scaling</h3><p>Let real user feedback decide what deserves to become V2.</p></div>
         </div>
       </div>
     </section>
 
     <section id="contact" class="contact-section">
-      <div class="container contact-card">
+      <div class="container contact-card reveal">
         <div>
           <p class="eyebrow">Contact</p>
-          <h2>Let’s connect.</h2>
-          <p>For project collaboration, healthcare IT opportunities, or feedback on something I built.</p>
+          <h2>Have an idea, role, or collaboration in mind?</h2>
+          <p>I'm open to project collaboration, healthcare IT opportunities, product feedback, and interesting problems worth building around.</p>
         </div>
         <div class="contact-links">
-          <a class="button primary" href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="button secondary" href="https://github.com/Nikhilr23" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="button primary" href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank" rel="noreferrer">Connect on LinkedIn ↗</a>
+          <a class="button secondary" href="https://github.com/Nikhilr23" target="_blank" rel="noreferrer">Explore GitHub ↗</a>
         </div>
       </div>
     </section>
@@ -137,8 +190,8 @@
 
   <footer>
     <div class="container footer-wrap">
-      <strong>Nikhil Reddy Chitkula</strong>
-      <span>Healthcare IT · Cybersecurity · SaaS</span>
+      <div><strong>Nikhil Reddy Chitkula</strong><span>Healthcare IT · Cybersecurity · SaaS</span></div>
+      <a href="#top">Back to top ↑</a>
     </div>
   </footer>
 </body>
