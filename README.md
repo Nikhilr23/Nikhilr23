@@ -1,6 +1,6 @@
 # Nikhil Reddy Chitkula
 
-### Healthcare IT · Health Informatics · Cybersecurity · SaaS Builder
+### Healthcare IT · Cybersecurity · SaaS · Browser-first utility tools | Portfolio & GitHub profile.
 
 I build practical tools at the intersection of **healthcare workflows, security, data, and small-business software**.
 
