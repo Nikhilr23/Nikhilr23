@@ -105,20 +105,19 @@ These are intentionally small experiments focused on one decision or workflow ea
 ## 🔄 Conversion & File Tools
 
 ### ConvertLab
-**File conversion toolkit · Planned**
+**File conversion toolkit · Live**
 
-A separate family of privacy-conscious conversion utilities for transforming common files and data formats directly in the browser whenever practical.
+A privacy-conscious browser toolkit for transforming common image and data formats locally whenever practical.
 
-**Planned first tools:**
-- JPG ↔ PNG ↔ WebP
-- Image resize & compression
+**Available now:**
+- JPG / PNG / WebP image conversion
+- Image resize & quality controls
+- SVG input support for raster output
 - CSV ↔ JSON
-- TXT ↔ Markdown
-- SVG → PNG
 
-**Direction:** fast, simple conversions with a strong preference for local processing so users do not have to upload ordinary files to a server when the browser can handle the task safely.
+**Product direction:** fast, simple conversions with local processing for supported formats, so ordinary files do not need to be sent to a conversion server.
 
-Planned repository: `Nikhilr23/convertlab`
+[Live app](https://nikhilr23.github.io/convertlab/) · [Repository](https://github.com/Nikhilr23/convertlab)
 
 ---
 
