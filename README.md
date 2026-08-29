@@ -14,6 +14,7 @@ My approach is simple: **understand the workflow, reduce the problem, make the l
 - **Cybersecurity & IAM** — access control, identity, security fundamentals, healthcare security
 - **Data & analytics** — SQL, Power BI, operational metrics, structured problem-solving
 - **Browser-first products** — focused calculators and workflow utilities built with transparent logic
+- **Conversion & file utilities** — privacy-conscious tools for transforming common file and data formats
 
 ---
 
@@ -98,6 +99,26 @@ Hands-on healthcare security work covering vulnerability assessment, network mon
 - [Review Request Generator](https://github.com/Nikhilr23/review-request-generator)
 
 These are intentionally small experiments focused on one decision or workflow each.
+
+---
+
+## 🔄 Conversion & File Tools
+
+### ConvertLab
+**File conversion toolkit · Planned**
+
+A separate family of privacy-conscious conversion utilities for transforming common files and data formats directly in the browser whenever practical.
+
+**Planned first tools:**
+- JPG ↔ PNG ↔ WebP
+- Image resize & compression
+- CSV ↔ JSON
+- TXT ↔ Markdown
+- SVG → PNG
+
+**Direction:** fast, simple conversions with a strong preference for local processing so users do not have to upload ordinary files to a server when the browser can handle the task safely.
+
+Planned repository: `Nikhilr23/convertlab`
 
 ---
 
