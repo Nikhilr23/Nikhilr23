@@ -1,32 +1,47 @@
-👋 Hello, I'm Nikhil Reddy Chitkula!
+# Hi, I'm Nikhil Reddy Chitkula 👋
 
-🎓 Master’s in Health Informatics | 🛡️ Entry-Level Healthcare Cybersecurity Analyst  
-💻 Passionate about protecting Electronic Health Records (EHRs) and improving digital health systems through secure technology.
+**Healthcare IT · Health Informatics · Cybersecurity · SaaS Builder**
+
+I build practical technology projects across healthcare IT, cybersecurity, digital health, and small-business software. My focus is turning real workflow problems into simple, useful products.
+
+## 🚀 Featured Projects
+
+### 💰 [ProfitQuote](https://github.com/Nikhilr23/profitquote)
+A live profit-aware pricing calculator for cleaning businesses. It calculates true job cost, estimated profit, gross margin, and the minimum profitable quote needed to reach a target margin.
+
+**Live:** https://nikhilr23.github.io/profitquote/
+
+### 🧠 [MindSync](https://github.com/Nikhilr23/MindSync-Demo)
+A digital mental-wellness project featuring mood tracking, wellness resources, guided content, support resources, and a logic-based conversational companion.
+
+### 🛡️ [Healthcare Cybersecurity](https://github.com/Nikhilr23/healthcare-cybersecurity)
+Hands-on healthcare security work involving vulnerability assessment, network traffic monitoring, endpoint protection, and EHR security concepts using Kali Linux, Nmap, Wireshark, ClamAV, and Splunk.
+
+### 🔐 [Cybersecurity Healthcare 101](https://github.com/Nikhilr23/cybersecurity-healthcare-101)
+A practical learning portfolio covering healthcare cybersecurity concepts and hands-on security exercises.
+
+### 🎨 [Healthcare Cybersecurity Visuals](https://github.com/Nikhilr23/healthcare-cybersecurity-visuals)
+Visual material for explaining healthcare cybersecurity concepts and security workflows.
+
+## 🧰 Areas I Work In
+
+- Healthcare IT and EHR workflows
+- Health Informatics
+- Cybersecurity and IAM concepts
+- HTML, CSS, JavaScript
+- SQL and Power BI
+- HL7 / FHIR concepts
+- Product prototyping and SaaS validation
+
+## 🌐 Portfolio Website
+
+This repository now also contains my personal portfolio website, bringing my projects together in one place.
+
+## 📫 Connect
+
+- [LinkedIn](https://www.linkedin.com/in/nikhil-reddy-chitkula/)
+- [GitHub](https://github.com/Nikhilr23)
 
 ---
 
-🔐 Cybersecurity Journey (Portfolio)
-🧠 I'm currently building hands-on projects and learning by doing.
-
-| Day | Project Title | Skills/Tools |
-|-----|---------------|--------------|
-| 1   | [Cybersecurity Overview in Healthcare](https://github.com/NikhilReddyChitkula/cybersecurity-healthcare-101/tree/main/day1-healthcare-overview) | HIPAA, Threat Analysis |
-| 2   | [Nmap Port Scan Simulation](https://github.com/NikhilReddyChitkula/cybersecurity-healthcare-101/tree/main/day2-nmap-scan) | Nmap, Network Scanning |
-
----
-
-🧰 Skills & Tools
-- Cybersecurity Tools: Kali Linux, Nmap, Wireshark, ClamAV, Splunk  
-- Health Informatics: EHR systems, HIPAA compliance, data governance  
-- Soft Skills: Visual learner, good communicator, problem solver
-
----
-
-📫 Let’s Connect!
-- 🌐 [LinkedIn](https://www.linkedin.com/in/nikhil-reddy-chitkula/)
-- 📧 premiumservice.collection@gmail.com  
-- 🔗 [GitHub Portfolio](https://github.com/NikhilReddyChitkula/cybersecurity-healthcare-101)
-
----
-
-💡 *I'm actively looking for entry-level opportunities in healthcare cybersecurity. Let's secure the future of health together!*
+*Building, testing, learning, and improving one useful project at a time.*
