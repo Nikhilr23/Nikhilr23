@@ -1,5 +1,5 @@
 {
-  "name": "marcus-bennet-portfolio",
+  "name": "nikhil-reddy-portfolio",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -9,12 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/drei": "^10.7.8",
+    "@react-three/fiber": "^9.7.0",
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
-    "typescript": "latest",
+    "framer-motion": "^13.2.0",
+    "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "lucide-react": "latest"
+    "three": "^0.185.1",
+    "typescript": "latest",
+    "vite": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
