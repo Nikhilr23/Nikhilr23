@@ -1,32 +1,52 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
-const ThreeScene = lazy(() => import('./ThreeScene'))
+import { useEffect, useState } from 'react'
+import { Menu, Play, X } from 'lucide-react'
 
-const projects=[
- {n:'01',title:'NoShowCalc',type:'Healthcare Operations',desc:'A focused calculator that makes the annual cost of missed appointments visible.',metric:'$78K',metricLabel:'illustrative annual opportunity',live:'https://nikhilr23.github.io/noshowcalc/',code:'https://github.com/Nikhilr23/noshowcalc',tone:'lime'},
- {n:'02',title:'ProfitQuote',type:'Pricing Intelligence',desc:'A local-first quoting tool that exposes true cost, profit, and target margin before a quote is sent.',metric:'35%',metricLabel:'target margin model',live:'https://nikhilr23.github.io/profitquote/',code:'https://github.com/Nikhilr23/profitquote',tone:'cream'},
- {n:'03',title:'ConvertLab',type:'Privacy-first Utility',desc:'Browser-based file conversion designed around clear limits and files that stay on the device.',metric:'0',metricLabel:'uploads required',live:'https://nikhilr23.github.io/convertlab/',code:'https://github.com/Nikhilr23/convertlab',tone:'blue'}
-]
-const skills=[['Epic / EHR','Clinical workflows, access, operations and end-user support.'],['Identity & Access','RBAC, access reviews, onboarding and audit readiness.'],['Data & Interoperability','SQL, Power BI, HL7 and FHIR for clearer system decisions.'],['Product Building','Focused browser tools that solve narrow, visible problems.']]
-const roles=[['2025 — NOW','Clinical Systems Analyst','Cleveland Clinic'],['2025','Epic Associate Application Analyst','Prime Healthcare'],['2023 — 2025','M.S. Health Informatics','University of Findlay']]
+const links = ['ABOUT', 'PROCESS', 'PROJECTS', 'CATALOG', 'D.O.T', 'TALK']
 
-const Reveal=({children,className='',delay=0}:{children:React.ReactNode,className?:string,delay?:number})=>{const reduce=useReducedMotion();return <motion.div className={className} initial={reduce?false:{opacity:0,y:50}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.85,delay,ease:[.16,1,.3,1]}}>{children}</motion.div>}
+function Logo() {
+  return <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256" fill="none" aria-label="Grilled Pixels logo" role="img"><path d="M 160 88 L 194 34 L 216 0 L 256 0 L 256 40 L 221.5 93.5 L 200 128 L 256 128 L 256 256 L 96 256 L 96 168 L 64.246 220 L 40 256 L 0 256 L 0 216 L 34 162 L 56 128 L 0 128 L 0 0 L 160 0 Z" fill="white" /></svg>
+}
 
-export default function App(){
- const [menu,setMenu]=useState(false), reduce=useReducedMotion(); const {scrollYProgress}=useScroll(); const progress=useSpring(scrollYProgress,{stiffness:120,damping:28,mass:.3})
- useEffect(()=>{document.body.style.overflow=menu?'hidden':'';return()=>{document.body.style.overflow=''}},[menu])
- return <div className="site-shell">
-  <motion.div className="progress" style={{scaleX:progress}}/><div className="grain" aria-hidden="true"/>
-  <header className="topbar"><a className="logo" href="#top"><b>NR</b><span>NIKHIL REDDY</span></a><nav><a href="#work">Work</a><a href="#expertise">Expertise</a><a href="#about">About</a></nav><a className="status" href="#contact"><i/>Available for opportunities</a><button className={`menu ${menu?'open':''}`} onClick={()=>setMenu(!menu)} aria-label="Toggle menu"><i/><i/></button></header>
-  <aside className={`drawer ${menu?'open':''}`}><nav>{['Work','Expertise','About','Contact'].map((x,i)=><a key={x} style={{transitionDelay:`${150+i*70}ms`}} href={`#${x.toLowerCase()}`} onClick={()=>setMenu(false)}>{x}<span>0{i+1}</span></a>)}</nav><div><a href="https://github.com/Nikhilr23" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></aside>
-  <main>
-   <section className="hero" id="top"><div className="hero-grid"><motion.div className="hero-copy" initial={reduce?false:{opacity:0,y:35}} animate={{opacity:1,y:0}} transition={{duration:1,delay:.25,ease:[.16,1,.3,1]}}><p className="eyebrow">HEALTHCARE SYSTEMS × DIGITAL PRODUCTS</p><h1><span>MAKING COMPLEX</span><em>SYSTEMS HUMAN.</em></h1><p className="intro">I connect healthcare workflows, secure access, data, and practical software—turning operational friction into tools people can actually use.</p><div className="hero-links"><a className="primary" href="#work">Explore work <span>↘</span></a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></motion.div><div className="scene" aria-label="Interactive connected healthcare systems sculpture"><Suspense fallback={null}><ThreeScene/></Suspense></div><motion.div className="portrait" initial={reduce?false:{opacity:0,y:45,scale:1.03}} animate={{opacity:1,y:0,scale:1}} transition={{duration:1.2,delay:.4,ease:[.16,1,.3,1]}}><img src="assets/nikhil-portrait-cutout.webp" alt="Nikhil Reddy Chitkula"/></motion.div></div><div className="hero-bottom"><span>SCROLL TO EXPLORE</span><span>EPIC · IAM · HL7/FHIR · SQL</span></div></section>
-   <div className="ticker"><div>NIKHIL REDDY <i>✦</i> HEALTHCARE IT <i>✦</i> PRODUCT BUILDER <i>✦</i> NIKHIL REDDY <i>✦</i> HEALTHCARE IT <i>✦</i> PRODUCT BUILDER <i>✦</i></div></div>
-   <section className="work section" id="work"><Reveal className="section-title"><p>01 / SELECTED WORK</p><h2>Focused products.<br/><em>Clear outcomes.</em></h2></Reveal><div className="project-list">{projects.map((p,i)=><Reveal key={p.title} delay={i*.08}><article className={`project-card ${p.tone}`}><div className="project-copy"><p>{p.n} / {p.type}</p><h3>{p.title}</h3><span>{p.desc}</span><div><a href={p.live} target="_blank">Live product ↗</a><a href={p.code} target="_blank">Source ↗</a></div></div><div className="project-art"><span>{p.metricLabel}</span><strong>{p.metric}</strong><div className="orbit-art"><i/><i/><i/></div></div></article></Reveal>)}</div></section>
-   <section className="expertise section" id="expertise"><Reveal className="section-title"><p>02 / CAPABILITIES</p><h2>Different disciplines.<br/><em>One system view.</em></h2></Reveal><div className="skill-grid">{skills.map((s,i)=><Reveal key={s[0]} delay={i*.07}><article><span>0{i+1}</span><div className="skill-icon"><i/><i/></div><h3>{s[0]}</h3><p>{s[1]}</p></article></Reveal>)}</div></section>
-   <section className="about section" id="about"><div className="about-visual"><Reveal><img src="assets/nikhil-portrait.jpg" alt="Nikhil Reddy"/><span>NRC / SYSTEMS ANALYST</span></Reveal></div><Reveal className="about-copy"><p>03 / ABOUT</p><h2>Between the workflow and the system.</h2><p>My work sits at the intersection of healthcare operations, application support, identity, data, and product thinking. I start with what people need to accomplish, then make the technology clearer.</p><blockquote>Understand the workflow before changing the tool.</blockquote></Reveal></section>
-   <section className="experience section"><Reveal className="section-title"><p>04 / EXPERIENCE</p><h2>Healthcare context.<br/><em>Builder mindset.</em></h2></Reveal><div className="timeline">{roles.map((r,i)=><Reveal key={r[0]} delay={i*.06}><article><span>{r[0]}</span><h3>{r[1]}</h3><p>{r[2]}</p><i>↗</i></article></Reveal>)}</div></section>
-   <section className="contact section" id="contact"><Reveal><p>05 / LET'S CONNECT</p><a className="contact-title" href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">BUILD SOMETHING<br/><em>USEFUL TOGETHER.</em><span>↗</span></a><div className="contact-foot"><span>OPEN TO HEALTHCARE IT & PRODUCT-MINDED ROLES</span><div><a href="https://github.com/Nikhilr23" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></div></Reveal></section>
-  </main><footer><span>© 2026 NIKHIL REDDY CHITKULA</span><a href="#top">BACK TO TOP ↑</a></footer>
- </div>
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    const onEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') setMenuOpen(false) }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [])
+  return <div className="relative h-screen w-full overflow-hidden bg-black text-white">
+    <video className="absolute inset-0 h-full w-full object-cover lg:scale-[1.2]" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4" autoPlay muted loop playsInline aria-hidden="true" />
+    <div className="relative z-10 flex h-full flex-col px-5 sm:px-6 md:px-10 lg:px-14">
+      <header className="flex items-center justify-between py-6">
+        <Logo />
+        <nav className="hidden items-center gap-8 text-sm tracking-wide md:flex" aria-label="Main navigation">{links.map(link => <a key={link} href="#" className="transition-opacity hover:opacity-70">{link}</a>)}</nav>
+        <button className="p-2 transition-opacity hover:opacity-70 md:hidden" type="button" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={24} /></button>
+      </header>
+      <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+        <div><h2 className="text-lg font-normal leading-tight tracking-wide md:text-xl">ADAM<br /><span className="font-pixel text-2xl md:text-3xl">ROBERTS</span></h2><div className="mt-3 text-[10px] text-white/50">*</div><p className="font-pixel mt-1 text-xs leading-relaxed text-white/60">Grilled Pixels is my<br />personal brand - I came up<br />with it in 2004 based on<br />&quot;cooking up ideas&quot;</p></div>
+        <div className="text-right lg:text-left"><h2 className="text-lg font-normal leading-tight tracking-wide md:text-xl">DESIGN &amp;<br /><span className="font-pixel text-2xl md:text-3xl">ENGINEERING</span></h2></div>
+        <div><h3 className="font-pixel mb-3 text-base uppercase tracking-widest text-white/50">What I Do</h3><p className="max-w-[220px] text-sm leading-relaxed text-white/90">I create the top 1% of experiences for brands and digital products</p></div>
+        <div className="text-right lg:text-left"><h3 className="font-pixel mb-3 text-base uppercase tracking-widest text-white/50">Services</h3><ul className="space-y-0.5 text-sm leading-relaxed text-white/90"><li>Branding</li><li>Creative Direction &amp; Strategy</li><li>UX/UI Design</li><li>Web Development (React/Nextjs)</li><li>3D, WebGL / Photography</li><li>Video &amp; Animation</li></ul></div>
+      </div>
+      <div className="flex-1" />
+      <div className="pb-4">
+        <div className="grid grid-cols-1 items-end gap-4 sm:gap-6 lg:grid-cols-2">
+          <h1 className="text-3xl font-normal uppercase tracking-wide sm:text-4xl md:text-5xl lg:text-[3.75rem] xl:text-[4.25rem]" style={{ lineHeight: 0.72 }}>I BRING THE<br /><span className="font-pixel inline-block text-[1.25em] leading-none align-baseline">UNEXPECTED</span> TO<br />BRAND &amp; DIGITAL<br /><span className="font-pixel inline-block text-[1.25em] leading-none align-baseline">EXPERIENCES</span></h1>
+          <div className="flex flex-col justify-end gap-4 sm:gap-6">
+            <button className="flex items-center gap-3 self-start border border-white/30 bg-white/5 px-6 py-3 backdrop-blur-sm transition-colors hover:bg-white/10" type="button" aria-label="Play showreel"><Play size={14} fill="white" /><span className="text-sm tracking-wider">PLAY SHOWREEL</span></button>
+            <div className="flex flex-wrap items-stretch gap-2 self-start text-sm text-white/80 sm:gap-3 lg:self-end">
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-sm tracking-tight sm:text-base">FWA</b><span className="text-xs text-white/50">x1</span></div>
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-lg sm:text-xl">W.</b><span className="text-xs text-white/50">x7</span></div>
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-[10px] tracking-tight sm:text-xs">CSSDesignAwards</b><span className="text-xs text-white/50">x22</span></div>
+            </div>
+          </div>
+        </div>
+        <footer className="mt-4 grid grid-cols-1 gap-2 pt-4 text-xs text-white/60 sm:mt-5 sm:grid-cols-2 sm:gap-4"><p>Open to freelance, contract or full-time. <a className="text-red-500 transition-colors hover:text-red-400" href="#">Schedule a call</a></p><p className="sm:text-right">5 full cases &bull; 82 archive fragments &bull; 22 catalog items</p></footer>
+      </div>
+    </div>
+    <div className={`fixed inset-0 z-50 flex flex-col bg-black/95 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`} aria-hidden={!menuOpen}>
+      <div className="flex items-center justify-between px-6 py-6"><Logo /><button type="button" className="p-2 transition-opacity hover:opacity-70" aria-label="Close menu" onClick={() => setMenuOpen(false)}><X size={24} /></button></div>
+      <nav className="flex flex-1 flex-col items-center justify-center gap-8" aria-label="Mobile navigation">{links.map((link, i) => <a key={link} href="#" onClick={() => setMenuOpen(false)} className={`text-2xl tracking-widest transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: menuOpen ? `${100 + i * 60}ms` : '0ms' }}>{link}</a>)}</nav>
+    </div>
+  </div>
 }
