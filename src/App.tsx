@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, Play, X } from 'lucide-react'
+import portrait from './assets/nikhil-hero-cutout.webp'
 
 type Panel = 'ABOUT' | 'PROCESS' | 'PROJECTS' | 'TOOLKIT'
 const panels: Panel[] = ['ABOUT', 'PROCESS', 'PROJECTS', 'TOOLKIT']
@@ -34,7 +35,7 @@ export default function App() {
   }
 
   return <div className="relative h-screen w-full overflow-x-hidden overflow-y-auto bg-black text-white lg:overflow-hidden">
-    <video className="absolute inset-0 h-full w-full object-cover lg:scale-[1.2]" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4" autoPlay muted loop playsInline aria-hidden="true" />
+    <img className="pointer-events-none absolute bottom-[15%] left-1/2 h-[55%] w-auto max-w-none -translate-x-1/2 object-contain md:bottom-[12%] md:h-[65%]" src={portrait} alt="" aria-hidden="true" />
     <div className="relative z-10 flex min-h-full flex-col px-5 sm:px-6 md:px-10 lg:h-full lg:min-h-0 lg:px-14">
       <header className="flex items-center justify-between py-6">
         <Logo />
