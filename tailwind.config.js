@@ -6,7 +6,7 @@ export default {
       colors: { cream: '#efeee9' },
       fontFamily: {
         hn: ['Helvetica Neue ME', 'Helvetica', 'Arial', 'sans-serif'],
-        sans: ['Helvetica Neue ME', 'Helvetica', 'Arial', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
         serif: ['Helvetica Neue ME', 'Helvetica', 'Arial', 'sans-serif'],
       },
     },

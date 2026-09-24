@@ -1,32 +1,109 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
-import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion'
-const ThreeScene = lazy(() => import('./ThreeScene'))
+import { useEffect, useState } from 'react'
+import { ArrowUpRight, Menu, Play, X } from 'lucide-react'
 
-const projects=[
- {n:'01',title:'NoShowCalc',type:'Healthcare Operations',desc:'A focused calculator that makes the annual cost of missed appointments visible.',metric:'$78K',metricLabel:'illustrative annual opportunity',live:'https://nikhilr23.github.io/noshowcalc/',code:'https://github.com/Nikhilr23/noshowcalc',tone:'lime'},
- {n:'02',title:'ProfitQuote',type:'Pricing Intelligence',desc:'A local-first quoting tool that exposes true cost, profit, and target margin before a quote is sent.',metric:'35%',metricLabel:'target margin model',live:'https://nikhilr23.github.io/profitquote/',code:'https://github.com/Nikhilr23/profitquote',tone:'cream'},
- {n:'03',title:'ConvertLab',type:'Privacy-first Utility',desc:'Browser-based file conversion designed around clear limits and files that stay on the device.',metric:'0',metricLabel:'uploads required',live:'https://nikhilr23.github.io/convertlab/',code:'https://github.com/Nikhilr23/convertlab',tone:'blue'}
+type Panel = 'ABOUT' | 'PROCESS' | 'PROJECTS' | 'TOOLKIT'
+const panels: Panel[] = ['ABOUT', 'PROCESS', 'PROJECTS', 'TOOLKIT']
+const links = [...panels, 'GITHUB', 'CONTACT'] as const
+const github = 'https://github.com/Nikhilr23'
+const linkedin = 'https://www.linkedin.com/in/nikhil-reddy-chitkula/'
+const projects = [
+  { name: 'NoShowCalc', type: 'Healthcare operations', description: 'Estimate the annual cost of missed appointments from practice-level assumptions.', live: 'https://nikhilr23.github.io/noshowcalc/', source: 'https://github.com/Nikhilr23/noshowcalc' },
+  { name: 'ProfitQuote', type: 'Pricing tool', description: 'See job cost, projected profit, margin, and the quote needed to meet a target margin.', live: 'https://nikhilr23.github.io/profitquote/', source: 'https://github.com/Nikhilr23/profitquote' },
+  { name: 'ConvertLab', type: 'Browser utility', description: 'Convert supported image and data formats locally in the browser.', live: 'https://nikhilr23.github.io/convertlab/', source: 'https://github.com/Nikhilr23/convertlab' },
+  { name: 'MindSync', type: 'Health informatics', description: 'A digital wellness prototype with mood tracking, resources, and a guided companion.', source: 'https://github.com/Nikhilr23/MindSync-Demo' },
 ]
-const skills=[['Epic / EHR','Clinical workflows, access, operations and end-user support.'],['Identity & Access','RBAC, access reviews, onboarding and audit readiness.'],['Data & Interoperability','SQL, Power BI, HL7 and FHIR for clearer system decisions.'],['Product Building','Focused browser tools that solve narrow, visible problems.']]
-const roles=[['2025 — NOW','Clinical Systems Analyst','Cleveland Clinic'],['2025','Epic Associate Application Analyst','Prime Healthcare'],['2023 — 2025','M.S. Health Informatics','University of Findlay']]
 
-const Reveal=({children,className='',delay=0}:{children:React.ReactNode,className?:string,delay?:number})=>{const reduce=useReducedMotion();return <motion.div className={className} initial={reduce?false:{opacity:0,y:50}} whileInView={{opacity:1,y:0}} viewport={{once:true,amount:.18}} transition={{duration:.85,delay,ease:[.16,1,.3,1]}}>{children}</motion.div>}
+function Logo() {
+  return <span className="inline-flex h-8 w-8 items-center justify-center border border-white text-[11px] font-semibold tracking-[-.14em]" aria-label="Nikhil Reddy">NR</span>
+}
 
-export default function App(){
- const [menu,setMenu]=useState(false), reduce=useReducedMotion(); const {scrollYProgress}=useScroll(); const progress=useSpring(scrollYProgress,{stiffness:120,damping:28,mass:.3})
- useEffect(()=>{document.body.style.overflow=menu?'hidden':'';return()=>{document.body.style.overflow=''}},[menu])
- return <div className="site-shell">
-  <motion.div className="progress" style={{scaleX:progress}}/><div className="grain" aria-hidden="true"/>
-  <header className="topbar"><a className="logo" href="#top"><b>NR</b><span>NIKHIL REDDY</span></a><nav><a href="#work">Work</a><a href="#expertise">Expertise</a><a href="#about">About</a></nav><a className="status" href="#contact"><i/>Available for opportunities</a><button className={`menu ${menu?'open':''}`} onClick={()=>setMenu(!menu)} aria-label="Toggle menu"><i/><i/></button></header>
-  <aside className={`drawer ${menu?'open':''}`}><nav>{['Work','Expertise','About','Contact'].map((x,i)=><a key={x} style={{transitionDelay:`${150+i*70}ms`}} href={`#${x.toLowerCase()}`} onClick={()=>setMenu(false)}>{x}<span>0{i+1}</span></a>)}</nav><div><a href="https://github.com/Nikhilr23" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></aside>
-  <main>
-   <section className="hero" id="top"><div className="hero-grid"><motion.div className="hero-copy" initial={reduce?false:{opacity:0,y:35}} animate={{opacity:1,y:0}} transition={{duration:1,delay:.25,ease:[.16,1,.3,1]}}><p className="eyebrow">HEALTHCARE SYSTEMS × DIGITAL PRODUCTS</p><h1><span>MAKING COMPLEX</span><em>SYSTEMS HUMAN.</em></h1><p className="intro">I connect healthcare workflows, secure access, data, and practical software—turning operational friction into tools people can actually use.</p><div className="hero-links"><a className="primary" href="#work">Explore work <span>↘</span></a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></motion.div><div className="scene" aria-label="Interactive connected healthcare systems sculpture"><Suspense fallback={null}><ThreeScene/></Suspense></div><motion.div className="portrait" initial={reduce?false:{opacity:0,y:45,scale:1.03}} animate={{opacity:1,y:0,scale:1}} transition={{duration:1.2,delay:.4,ease:[.16,1,.3,1]}}><img src="assets/nikhil-portrait-cutout.webp" alt="Nikhil Reddy Chitkula"/></motion.div></div><div className="hero-bottom"><span>SCROLL TO EXPLORE</span><span>EPIC · IAM · HL7/FHIR · SQL</span></div></section>
-   <div className="ticker"><div>NIKHIL REDDY <i>✦</i> HEALTHCARE IT <i>✦</i> PRODUCT BUILDER <i>✦</i> NIKHIL REDDY <i>✦</i> HEALTHCARE IT <i>✦</i> PRODUCT BUILDER <i>✦</i></div></div>
-   <section className="work section" id="work"><Reveal className="section-title"><p>01 / SELECTED WORK</p><h2>Focused products.<br/><em>Clear outcomes.</em></h2></Reveal><div className="project-list">{projects.map((p,i)=><Reveal key={p.title} delay={i*.08}><article className={`project-card ${p.tone}`}><div className="project-copy"><p>{p.n} / {p.type}</p><h3>{p.title}</h3><span>{p.desc}</span><div><a href={p.live} target="_blank">Live product ↗</a><a href={p.code} target="_blank">Source ↗</a></div></div><div className="project-art"><span>{p.metricLabel}</span><strong>{p.metric}</strong><div className="orbit-art"><i/><i/><i/></div></div></article></Reveal>)}</div></section>
-   <section className="expertise section" id="expertise"><Reveal className="section-title"><p>02 / CAPABILITIES</p><h2>Different disciplines.<br/><em>One system view.</em></h2></Reveal><div className="skill-grid">{skills.map((s,i)=><Reveal key={s[0]} delay={i*.07}><article><span>0{i+1}</span><div className="skill-icon"><i/><i/></div><h3>{s[0]}</h3><p>{s[1]}</p></article></Reveal>)}</div></section>
-   <section className="about section" id="about"><div className="about-visual"><Reveal><img src="assets/nikhil-portrait.jpg" alt="Nikhil Reddy"/><span>NRC / SYSTEMS ANALYST</span></Reveal></div><Reveal className="about-copy"><p>03 / ABOUT</p><h2>Between the workflow and the system.</h2><p>My work sits at the intersection of healthcare operations, application support, identity, data, and product thinking. I start with what people need to accomplish, then make the technology clearer.</p><blockquote>Understand the workflow before changing the tool.</blockquote></Reveal></section>
-   <section className="experience section"><Reveal className="section-title"><p>04 / EXPERIENCE</p><h2>Healthcare context.<br/><em>Builder mindset.</em></h2></Reveal><div className="timeline">{roles.map((r,i)=><Reveal key={r[0]} delay={i*.06}><article><span>{r[0]}</span><h3>{r[1]}</h3><p>{r[2]}</p><i>↗</i></article></Reveal>)}</div></section>
-   <section className="contact section" id="contact"><Reveal><p>05 / LET'S CONNECT</p><a className="contact-title" href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">BUILD SOMETHING<br/><em>USEFUL TOGETHER.</em><span>↗</span></a><div className="contact-foot"><span>OPEN TO HEALTHCARE IT & PRODUCT-MINDED ROLES</span><div><a href="https://github.com/Nikhilr23" target="_blank">GitHub ↗</a><a href="https://www.linkedin.com/in/nikhil-reddy-chitkula/" target="_blank">LinkedIn ↗</a></div></div></Reveal></section>
-  </main><footer><span>© 2026 NIKHIL REDDY CHITKULA</span><a href="#top">BACK TO TOP ↑</a></footer>
- </div>
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [panel, setPanel] = useState<Panel | null>(null)
+
+  useEffect(() => {
+    const onEscape = (event: KeyboardEvent) => { if (event.key === 'Escape') { setMenuOpen(false); setPanel(null) } }
+    window.addEventListener('keydown', onEscape)
+    return () => window.removeEventListener('keydown', onEscape)
+  }, [])
+
+  const navigate = (link: typeof links[number]) => {
+    setMenuOpen(false)
+    if (panels.includes(link as Panel)) setPanel(link as Panel)
+    else window.open(link === 'GITHUB' ? github : linkedin, '_blank', 'noopener,noreferrer')
+  }
+
+  return <div className="relative h-screen w-full overflow-x-hidden overflow-y-auto bg-black text-white lg:overflow-hidden">
+    <video className="absolute inset-0 h-full w-full object-cover lg:scale-[1.2]" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260725_114042_d2ed2a89-f2fa-449b-9609-da456344257b.mp4" autoPlay muted loop playsInline aria-hidden="true" />
+    <div className="relative z-10 flex min-h-full flex-col px-5 sm:px-6 md:px-10 lg:h-full lg:min-h-0 lg:px-14">
+      <header className="flex items-center justify-between py-6">
+        <Logo />
+        <nav className="hidden items-center gap-8 text-sm tracking-wide md:flex" aria-label="Main navigation">
+          {links.map(link => <button key={link} type="button" onClick={() => navigate(link)} className="transition-opacity hover:opacity-70">{link}</button>)}
+        </nav>
+        <button className="p-2 transition-opacity hover:opacity-70 md:hidden" type="button" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)}><Menu size={24} /></button>
+      </header>
+
+      <div className="mt-4 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4 lg:gap-8">
+        <div>
+          <h2 className="text-lg font-normal leading-tight tracking-wide md:text-xl">NIKHIL<br /><span className="font-pixel text-2xl md:text-3xl">REDDY</span></h2>
+          <div className="mt-3 text-[10px] text-white/50">*</div>
+          <p className="font-pixel mt-1 text-xs leading-relaxed text-white/60">Healthcare systems,<br />secure access, data,<br />and practical software<br />built around people.</p>
+        </div>
+        <div className="text-right lg:text-left">
+          <h2 className="text-lg font-normal leading-tight tracking-wide md:text-xl">HEALTHCARE<br /><span className="font-pixel text-2xl md:text-3xl">SYSTEMS</span></h2>
+        </div>
+        <div>
+          <h3 className="font-pixel mb-3 text-base uppercase tracking-widest text-white/50">What I Do</h3>
+          <p className="max-w-[220px] text-sm leading-relaxed text-white/90">I turn complex workflows and data into clearer tools and decisions.</p>
+        </div>
+        <div className="text-right lg:text-left">
+          <h3 className="font-pixel mb-3 text-base uppercase tracking-widest text-white/50">Focus Areas</h3>
+          <ul className="space-y-0.5 text-sm leading-relaxed text-white/90">
+            <li>Healthcare IT &amp; EHR Support</li><li>Identity &amp; Access</li><li>Clinical Workflows</li><li>HL7 / FHIR</li><li>SQL &amp; Analytics</li><li>Browser-Based Products</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="flex-1" />
+      <div className="pb-4">
+        <div className="grid grid-cols-1 items-end gap-4 sm:gap-6 lg:grid-cols-2">
+          <h1 className="text-3xl font-normal uppercase tracking-wide sm:text-4xl md:text-5xl lg:text-[3.75rem] xl:text-[4.25rem]" style={{ lineHeight: 0.82 }}>
+            I MAKE COMPLEX<br /><span className="font-pixel inline-block text-[1.25em] leading-none align-baseline">SYSTEMS</span> FEEL<br />CLEARER FOR<br /><span className="font-pixel inline-block text-[1.25em] leading-none align-baseline">PEOPLE.</span>
+          </h1>
+          <div className="flex flex-col justify-end gap-4 sm:gap-6">
+            <button className="flex items-center gap-3 self-start border border-white/30 bg-white/5 px-6 py-3 backdrop-blur-sm transition-colors hover:bg-white/10" type="button" onClick={() => setPanel('PROJECTS')}><Play size={14} fill="white" /><span className="text-sm tracking-wider">VIEW SELECTED WORK</span></button>
+            <div className="flex flex-wrap items-stretch gap-2 self-start text-sm text-white/80 sm:gap-3 lg:self-end">
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-sm tracking-tight sm:text-base">EHR</b><span className="text-xs text-white/50">WORKFLOWS</span></div>
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-lg sm:text-xl">IAM</b><span className="text-xs text-white/50">ACCESS</span></div>
+              <div className="flex items-center gap-2 bg-[#0B0B0B] px-3 py-2 sm:px-4"><b className="text-[10px] tracking-tight sm:text-xs">HL7 / FHIR</b><span className="text-xs text-white/50">DATA</span></div>
+            </div>
+          </div>
+        </div>
+        <footer className="mt-4 grid grid-cols-1 gap-2 pt-4 text-xs text-white/60 sm:mt-5 sm:grid-cols-2 sm:gap-4">
+          <p>Open to healthcare IT opportunities. <a className="text-red-500 transition-colors hover:text-red-400" href={linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn</a></p>
+          <p className="sm:text-right">Healthcare IT &bull; Identity &amp; Access &bull; Useful Software</p>
+        </footer>
+      </div>
+    </div>
+
+    <div className={`fixed inset-0 z-50 flex flex-col bg-black/95 backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'}`} aria-hidden={!menuOpen}>
+      <div className="flex items-center justify-between px-6 py-6"><Logo /><button type="button" className="p-2 transition-opacity hover:opacity-70" aria-label="Close menu" onClick={() => setMenuOpen(false)}><X size={24} /></button></div>
+      <nav className="flex flex-1 flex-col items-center justify-center gap-8" aria-label="Mobile navigation">
+        {links.map((link, i) => <button key={link} type="button" onClick={() => navigate(link)} className={`text-2xl tracking-widest transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}`} style={{ transitionDelay: menuOpen ? `${100 + i * 60}ms` : '0ms' }}>{link}</button>)}
+      </nav>
+    </div>
+
+    {panel && <section className="fixed inset-0 z-[60] overflow-y-auto bg-[#0B0B0B]/95 px-5 py-6 text-white backdrop-blur-xl sm:px-10 lg:px-14" role="dialog" aria-modal="true" aria-label={panel}>
+      <div className="mx-auto max-w-6xl">
+        <div className="flex items-center justify-between"><Logo /><button type="button" onClick={() => setPanel(null)} className="p-2 transition-opacity hover:opacity-70" aria-label="Close section"><X size={24} /></button></div>
+        <p className="font-pixel mt-14 text-sm tracking-widest text-white/50">NIKHIL REDDY / {panel}</p>
+        <h2 className="mt-4 text-4xl font-normal uppercase tracking-tight sm:text-6xl">{panel === 'PROJECTS' ? 'SELECTED WORK.' : panel === 'ABOUT' ? 'WORKFLOW FIRST.' : panel === 'PROCESS' ? 'HOW I BUILD.' : 'MY TOOLKIT.'}</h2>
+        {panel === 'PROJECTS' && <div className="mt-10 grid gap-3 md:grid-cols-2">{projects.map((project, index) => <article key={project.name} className="border border-white/20 bg-black/40 p-6"><p className="font-pixel text-xs text-white/50">0{index + 1} / {project.type}</p><h3 className="mt-6 text-2xl">{project.name}</h3><p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">{project.description}</p><div className="mt-8 flex gap-6 text-sm">{project.live && <a className="inline-flex items-center gap-1 hover:text-red-400" href={project.live} target="_blank" rel="noreferrer">Live project <ArrowUpRight size={14} /></a>}<a className="inline-flex items-center gap-1 hover:text-red-400" href={project.source} target="_blank" rel="noreferrer">Source <ArrowUpRight size={14} /></a></div></article>)}</div>}
+        {panel === 'ABOUT' && <div className="mt-10 max-w-2xl space-y-5 text-lg leading-relaxed text-white/80"><p>I work across healthcare operations, application support, identity, data, and product thinking. I start with what people need to accomplish, then make the technology clearer.</p><p>My M.S. in Health Informatics informs how I think about clinical workflows, usable software, and responsible use of data.</p><a className="inline-flex items-center gap-2 text-red-400" href={linkedin} target="_blank" rel="noreferrer">Connect on LinkedIn <ArrowUpRight size={16} /></a></div>}
+        {panel === 'PROCESS' && <ol className="mt-10 grid gap-4 md:grid-cols-3">{[['01','Understand the workflow','Start with the decision someone needs to make.'],['02','Make the logic visible','Show assumptions, steps, and tradeoffs clearly.'],['03','Ship a focused tool','Build a small useful version, then learn from feedback.']].map(step => <li key={step[0]} className="border-t border-white/40 py-5"><span className="font-pixel text-white/50">{step[0]}</span><h3 className="mt-8 text-xl">{step[1]}</h3><p className="mt-3 text-sm leading-relaxed text-white/70">{step[2]}</p></li>)}</ol>}
+        {panel === 'TOOLKIT' && <div className="mt-10 grid gap-4 md:grid-cols-2">{[['EHR & workflows','Epic exposure, clinical application support, HL7, FHIR'],['Identity & security','RBAC, Active Directory, Entra ID, Okta, ServiceNow'],['Data','SQL, Power BI, Excel'],['Product building','React, TypeScript, browser-based tools']].map(item => <div key={item[0]} className="border-t border-white/40 py-5"><h3 className="text-xl">{item[0]}</h3><p className="mt-3 text-sm text-white/70">{item[1]}</p></div>)}</div>}
+      </div>
+    </section>}
+  </div>
 }
